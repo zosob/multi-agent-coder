@@ -3,6 +3,8 @@ from agents.architect import Architect
 from agents.engineer import Engineer
 from agents.critic import Critic
 from agents.test_runner import TestRunner
+from agents.refactorer import Refactorer
+
 from tools import write_file
 
 def extract_files_from_output(output):
@@ -20,6 +22,8 @@ def main():
     engineer = Engineer()
     critic = Critic()
     test_runner = TestRunner()
+    refactorer = Refactorer()
+
 
     # Step 1: Architect creates the plan
     plan = architect.send(user_request)
@@ -67,7 +71,30 @@ def main():
         print("\n--- Critic Review ---")
         print(review)
 
-    print("\n🎉 All agents agree. Code generation complete.")
+    print("\n✔ All tests passed and Critic approved.")
+    print("→ Beginning refactoring pass...")
+
+    # Step 5: Refactorer improves code quality
+    refactor_output = refactorer.send("Refactor the entire project.")
+    print("\n--- Refactorer Output ---")
+    print(refactor_output)
+
+    # Write refactored files
+    files = extract_files_from_output(refactor_output)
+    for filename, code in files:
+        print(write_file(filename, code))
+
+    # Step 6: Ensure refactoring didn't break anything
+    print("\n--- Test Runner Output (Post-Refactor) ---")
+    test_output = test_runner.run_tests()
+    print(test_output)
+
+    if "All tests passed" in test_output:
+        print("\n🎉 Final result: Clean, correct, production-quality code.")
+    else:
+        print("\n⚠ Refactoring introduced issues. Returning to Engineer loop.")
+
+
 
 if __name__ == "__main__":
     main()
