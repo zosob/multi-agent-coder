@@ -36,15 +36,10 @@ def main():
     for filename, code in files:
         print(write_file(filename, code))
 
-    # Step 3: Run tests
-    # Pick the first Python file the Engineer generated
-    python_files = [f for f, _ in files if f.endswith(".py")]
-    entrypoint = python_files[0] if python_files else None
-
-    if entrypoint:
-        test_output = test_runner.run(entrypoint)
-    else:
-        test_output = "Error: No Python files were generated."
+    # Step 3: Run tests with pytest
+    print("\n--- Test Runner Output ---")
+    test_output = test_runner.run_tests()
+    print(test_output)
 
     # Step 4: Critic reviews code + test results
     review = critic.send(code_output + "\n\nTest Output:\n" + test_output)
@@ -62,14 +57,10 @@ def main():
         for filename, code in files:
             print(write_file(filename, code))
 
-        # Pick the first Python file the Engineer generated
-        python_files = [f for f, _ in files if f.endswith(".py")]
-        entrypoint = python_files[0] if python_files else None
-
-        if entrypoint:
-            test_output = test_runner.run(entrypoint)
-        else:
-            test_output = "Error: No Python files were generated."
+        # Run tests again
+        print("\n--- Test Runner Output ---")
+        test_output = test_runner.run_tests()
+        print(test_output)
 
         # Critic reviews again
         review = critic.send(code_output + "\n\nTest Output:\n" + test_output)
