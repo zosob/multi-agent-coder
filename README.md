@@ -53,7 +53,7 @@ multi-agent-coder/
 ├── tools.py               # File I/O + Python execution tools
 ├── controller.py          # Orchestration loop
 └── README.md
-
+```
 ## ⚙️ How It Works
 
 Each agent is a lightweight wrapper around an LLM with:
@@ -68,10 +68,6 @@ Each agent is a lightweight wrapper around an LLM with:
 - ▶️ Python execution  
 
 Everything is intentionally **simple and transparent**, making it easy to understand and extend.
-
----
-
----
 
 ## 📜 License
 This project is licensed under the MIT License.
