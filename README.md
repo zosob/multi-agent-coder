@@ -1,103 +1,85 @@
-Multi‑Agent Coder (from scratch)
-A minimal, fully transparent agentic AI system built in pure Python — no frameworks, no abstractions, just the real mechanics of how agents plan, write, review, and refine code together.
-This project demonstrates how to build a multi‑agent architecture where each agent has a role, communicates with others, uses tools, and iterates toward a shared goal. It’s designed for learning, experimentation, and extending into more advanced agentic systems.
+# 🧠 Multi-Agent Coder (From Scratch)
 
-What this project does
-This system uses three collaborating agents:
-1. Architect
-Breaks a user request into:
-- a file structure
-- modules
-- a step‑by‑step engineering plan
-2. Engineer
-- writes code
-- saves files
-- runs Python scripts
-- fixes errors based on feedback
-3. Critic
-- reviews code
-- checks correctness
-- suggests improvements
-- ensures consistency
-The controller orchestrates the loop:
+> A minimal, fully transparent **agentic AI system** built in pure Python — no frameworks, no abstractions.
+
+This project demonstrates how multiple specialized agents can **plan, write, review, and refine code collaboratively** using simple tools and a shared workspace.
+
+Designed for **learning, teaching, and experimentation** with real agentic patterns.
+
+---
+
+## 🚀 Features
+
+### 🧩 Architect Agent
+- Breaks down user requests into:
+  - File structure
+  - Modules
+  - Step-by-step engineering plan
+
+### 🛠️ Engineer Agent
+- Writes and updates code
+- Saves files to disk
+- Executes Python scripts
+- Fixes errors based on feedback
+
+### 🔍 Critic Agent
+- Reviews generated code
+- Checks correctness
+- Suggests improvements
+- Ensures consistency
+
+---
+
+## 🔄 Agent Workflow
 Architect → Engineer → Critic → Engineer → Critic → … → Done
 
+This loop is the **core pattern behind modern agentic systems**.
 
-This is a foundational pattern in modern agentic AI systems.
+---
 
-Project Structure
+## 📁 Project Structure
+
+```bash
 multi-agent-coder/
 │
 ├── agents/
 │   ├── base_agent.py      # Core agent class
 │   ├── architect.py       # Planning agent
-│   ├── engineer.py        # Code‑writing agent
+│   ├── engineer.py        # Code-writing agent
 │   └── critic.py          # Review agent
 │
-├── workspace/             # Where generated code is written
+├── workspace/             # Generated code output
 │
 ├── tools.py               # File I/O + Python execution tools
-├── controller.py          # Multi‑agent orchestration loop
-└── README.md              # Project documentation
+├── controller.py          # Orchestration loop
+└── README.md
 
+## ⚙️ How It Works
 
-
-How it works
 Each agent is a lightweight wrapper around an LLM with:
-- a system prompt
-- message history
-- a send() method for communication
-The system uses simple Python tools to:
-- write files
-- read files
-- execute Python code
-This keeps the entire system transparent and easy to extend.
 
-Run the system
-Make sure Python 3 is installed.
-Install dependencies:
-pip install openai
+- A system prompt  
+- Message history  
+- A `send()` method for communication  
 
+### 🧰 Built-in Tools
 
-Run the controller:
-python3 controller.py
+- 📄 File read/write  
+- ▶️ Python execution  
 
+Everything is intentionally **simple and transparent**, making it easy to understand and extend.
 
-The agents will collaborate to build whatever project is requested, such as:
-“Build a CLI todo app with JSON storage.”
+---
 
-Generated files will appear in the workspace/ folder.
+---
 
-Why this project exists
+## 📜 License
+This project is licensed under the MIT License.
 
-Most agent frameworks hide the real mechanics behind layers of abstractions.
-This project does the opposite:
-- exposes the agent loop
-- exposes tool calling
-- exposes message passing
-- exposes the orchestration logic
-It’s ideal for:
-- learning agentic AI
-- teaching agent systems
-- experimenting with new agent roles
-- extending into autonomous planners, memory, or multi‑tool workflows
+## ⭐ Contributing
+If you want to experiment or extend this system:
+- Fork the repo
+- Add your agent or tool
+- Open a PR
 
-Future direction to extend the system: 
-
-Add new agents easily:
-- TestRunner
-- Refactorer
-- Documentation Writer
-- Performance Optimizer
-- Planner (autonomous orchestration)
-- Memory module
-Or integrate:
-- local models (Ollama)
-- vector memory
-- web search tools
-- API‑calling tools
-
-
-MIT License
-Copyright (c) 2026 Bhaskar
 
