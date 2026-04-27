@@ -6,10 +6,13 @@ class BaseAgent:
         self.system_prompt = system_prompt
         self.messages = [{"role": "system", "content": system_prompt}]
 
-    def send(self, message):
-        self.messages.append({"role": "user", "content": message})
+    def send(self, user_message, memory=None):
+        if memory:
+            self.messages.append({"role": "system", "content": f"Memory:\n{memory}"})
 
-        response = openai.chat.completions.create(
+        self.messages.append({"role": "user", "content": user_message})
+
+        response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=self.messages
         )
