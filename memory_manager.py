@@ -10,6 +10,8 @@ class MemoryManager:
             "loop": {}
         }
         self.load()
+        # Give Planner its own memory bucket
+        self.memory["agents"].setdefault("Planner", {})
 
     def load(self):
         if os.path.exists(self.path):
