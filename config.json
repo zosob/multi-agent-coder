@@ -1,0 +1,46 @@
+{
+    "default_backend": "openai",
+    "default_model": "gpt-4o-mini",
+
+    "agents": {
+        "Planner": {
+            "backend": "openai",
+            "model": "gpt-4o-mini",
+            "temperature": 0.2,
+            "max_tokens": 2000
+        },
+
+        "Architect": {
+            "backend": "openai",
+            "model": "gpt-4o-mini",
+            "temperature": 0.3,
+            "max_tokens": 3000
+        },
+
+        "Engineer": {
+            "backend": "ollama",
+            "model": "qwen2.5-coder:7b",
+            "temperature": 0.1,
+            "max_tokens": 4000
+        },
+
+        "Critic": {
+            "backend": "openai",
+            "model": "gpt-4o-mini",
+            "temperature": 0.1,
+            "max_tokens": 3000
+        },
+
+        "Refactorer": {
+            "backend": "ollama",
+            "model": "qwen2.5-coder:7b",
+            "temperature": 0.1,
+            "max_tokens": 4000
+        },
+
+        "TestRunner": {
+            "backend": "none",
+            "model": "none"
+        }
+    }
+}
